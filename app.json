@@ -1,0 +1,43 @@
+{
+  "name": "TaskFlow - Todo & YouTube Downloader",
+  "description": "A modern productivity app with task management and YouTube downloader",
+  "repository": "https://github.com/yourusername/taskflow",
+  "logo": "https://via.placeholder.com/120x120.png?text=📝",
+  "keywords": ["flask", "todo", "productivity", "youtube-downloader", "pwa"],
+  "image": "heroku/python",
+  "env": {
+    "FLASK_ENV": {
+      "description": "Flask environment (production/development)",
+      "value": "production"
+    },
+    "EMAIL_SMTP_SERVER": {
+      "description": "SMTP server for email verification",
+      "value": "smtp.gmail.com",
+      "required": false
+    },
+    "EMAIL_SMTP_PORT": {
+      "description": "SMTP port",
+      "value": "587",
+      "required": false
+    },
+    "EMAIL_SENDER": {
+      "description": "Sender email address",
+      "required": false
+    },
+    "EMAIL_PASSWORD": {
+      "description": "Email password or app password",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
