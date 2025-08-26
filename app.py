@@ -7,10 +7,6 @@ import tempfile
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from config import EMAIL_CONFIG
-from youtube_downloader import YouTubeDownloader
-
-# Initialize YouTube downloader
-yt_downloader = YouTubeDownloader()
 
 app = Flask(__name__)
 
@@ -54,33 +50,15 @@ def downloader():
 
 @app.route('/check-ytdlp')
 def check_ytdlp():
-    if yt_downloader.is_available():
-        try:
-            import yt_dlp
-            return jsonify({'status': 'installed', 'version': yt_dlp.version.__version__})
-        except:
-            return jsonify({'status': 'installed', 'version': 'unknown'})
-    else:
-        return jsonify({'status': 'not_installed', 'message': 'yt-dlp not available'})
+    return jsonify({'status': 'coming_soon', 'message': 'YouTube downloader coming soon!'})
 
 @app.route('/download-video', methods=['POST'])
 def download_video():
-    data = request.get_json()
-    url = data.get('url')
-    
-    if not url or not ('youtube.com' in url or 'youtu.be' in url):
-        return jsonify({'success': False, 'error': 'Invalid YouTube URL'})
-    
-    result = yt_downloader.get_video_info(url)
-    return jsonify(result)
+    return jsonify({'success': False, 'error': 'Coming Soon! YouTube downloader feature will be available soon.'})
 
 @app.route('/download-file', methods=['POST'])
 def download_file():
-    data = request.get_json()
-    url = data.get('url')
-    format_id = data.get('format_id')
-    
-    return yt_downloader.download_file(url, format_id)
+    return jsonify({'success': False, 'error': 'Coming Soon! YouTube downloader feature will be available soon.'})
 
 @app.route('/send-code', methods=['POST'])
 def send_verification_code():
